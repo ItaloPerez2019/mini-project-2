@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,7 +16,9 @@ class ContactFormTest extends TestCase
      */
     public function testContactFormPage()
     {
-        $response = $this->get('/contact');
+        $user = User::first();
+        $this->be($user); //You are now authenticated
+        $response = $this->get('/contact-form');
         $response->assertStatus(200);
     }
 }
