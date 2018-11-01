@@ -7,24 +7,19 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UpdateUserNameTest extends TestCase
+class DeleteUserTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testUpdateUser()
+    public function testDeleteUser()
     {
-        $data['name'] = 'Steve Smith';
-
         $user = User::first();
 
-        $user->update($data);
-
-        $this->assertInstanceOf(User::class, $user);
-
-        $this->assertEquals($data['name'], $user->name);
+        if($user)
+          $user->delete();
 
         $this->assertTrue(true);
     }
